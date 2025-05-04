@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: review-classifier-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt && python -m spacy download en_core_web_sm
+    startCommand: gunicorn sample:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.7
+      - key: NLTK_DATA
+        value: ./nltk_data
